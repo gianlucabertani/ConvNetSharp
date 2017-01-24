@@ -1,17 +1,14 @@
 ﻿using ConvNetSharp.Layers;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ConvNetSharp.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class FullyConnLayerTests
     {
-        [Test]
-        [TestCase(2, 2, 2, 2)]
-        [TestCase(20, 20, 2, 20)]
         public void GradientWrtParametersCheck(int inputWidth, int inputHeight, int inputDepth, int neuronCount)
         {
             // Create layer
@@ -20,7 +17,19 @@ namespace ConvNetSharp.Tests
             GradientCheckTools.GradienWrtParameterstCheck(inputWidth, inputHeight, inputDepth, layer);
         }
 
-        [Test]
+        [TestMethod]
+        public void GradientWrtParametersCheckTest1(int inputWidth, int inputHeight, int inputDepth, int neuronCount)
+        {
+            GradientWrtParametersCheck(2, 2, 2, 2);
+        }
+
+        [TestMethod]
+        public void GradientWrtParametersCheckTest2(int inputWidth, int inputHeight, int inputDepth, int neuronCount)
+        {
+            GradientWrtParametersCheck(20, 20, 2, 20);
+        }
+
+        [TestMethod]
         public void SerializationTest()
         {
             // Create a FullyConnLayer

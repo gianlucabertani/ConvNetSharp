@@ -1,15 +1,15 @@
 ﻿using ConvNetSharp.Layers;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ConvNetSharp.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class PoolLayerTests
     {
-        [Test]
+        [TestMethod]
         public void GradientWrtInputCheck()
         {
             const int inputWidth = 20;
@@ -24,7 +24,7 @@ namespace ConvNetSharp.Tests
             GradientCheckTools.GradientCheck(layer, inputWidth, inputHeight, inputDepth, 1e-6);
         }
 
-        [Test]
+        [TestMethod]
         public void SerializationTest()
         {
             // Create a PoolLayer

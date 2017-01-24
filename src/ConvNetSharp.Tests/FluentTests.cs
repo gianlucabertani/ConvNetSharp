@@ -1,12 +1,12 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ConvNetSharp.Fluent;
 
 namespace ConvNetSharp.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class FluentTests
     {
-        [Test]
+        [TestMethod]
         public void CreateTest()
         {
             var net = FluentNet.Create(10, 10, 2)
@@ -18,7 +18,7 @@ namespace ConvNetSharp.Tests
             //net.Forward(new Volume(10, 10, 2));
         }
 
-        [Test]
+        [TestMethod]
         public void MergeTest()
         {
             var branch1 = FluentNet.Create(10, 10, 2)

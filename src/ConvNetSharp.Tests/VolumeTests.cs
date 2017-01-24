@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization;
@@ -6,10 +6,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ConvNetSharp.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class VolumeTests
     {
-        [Test]
+        [TestMethod]
         public void FlipTest()
         {
             var volume = new Volume(3, 3, 2, 0.0);
@@ -77,7 +77,7 @@ namespace ConvNetSharp.Tests
             Assert.AreEqual(45.0, flipped.Get(0, 0, 1));
         }
 
-        [Test]
+        [TestMethod]
         public void SerializationTest()
         {
             var volume = new Volume(30, 30, 30); // filled with random values
@@ -107,7 +107,7 @@ namespace ConvNetSharp.Tests
             }
         }
 
-        [Test]
+        [TestMethod]
         public void CloneTest()
         {
             var vol = new Volume(10, 10, 10);

@@ -1,15 +1,15 @@
 ﻿using ConvNetSharp.Fluent;
 using ConvNetSharp.Layers;
 using ConvNetSharp.Serialization;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 
 namespace ConvNetSharp.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class SerializationTests
     {
-        [Test]
+        [TestMethod]
         public void JsonNetSerializerTest()
         {
             var net = new Net();
@@ -32,8 +32,8 @@ namespace ConvNetSharp.Tests
             Assert.IsTrue(net.Layers[0] is InputLayer);
 
             var deserializedConv = net.Layers[1] as ConvLayer;
-            Assert.NotNull(deserializedConv);
-            Assert.NotNull(deserializedConv.Filters);
+            Assert.IsNotNull(deserializedConv);
+            Assert.IsNotNull(deserializedConv.Filters);
             Assert.AreEqual(16, deserializedConv.Filters.Count);
             for (int i = 0; i < deserializedConv.Filters.Count; i++)
             {
@@ -45,8 +45,8 @@ namespace ConvNetSharp.Tests
             }
 
             var deserializedFullyCon = net.Layers[2] as FullyConnLayer;
-            Assert.NotNull(deserializedFullyCon);
-            Assert.NotNull(deserializedFullyCon.Filters);
+            Assert.IsNotNull(deserializedFullyCon);
+            Assert.IsNotNull(deserializedFullyCon.Filters);
             Assert.AreEqual(3, deserializedFullyCon.Filters.Count);
             for (int i = 0; i < deserializedFullyCon.Filters.Count; i++)
             {
@@ -61,7 +61,7 @@ namespace ConvNetSharp.Tests
             Assert.AreEqual(3, ((SoftmaxLayer)net.Layers[3]).ClassCount);
         }
 
-        [Test]
+        [TestMethod]
         public void FluentBinaryNetSerializerTest()
         {
             var net = FluentNet.Create(5, 5, 3)
@@ -86,7 +86,7 @@ namespace ConvNetSharp.Tests
             }
         }
 
-        [Test]
+        [TestMethod]
         public void BinaryNetSerializerTest()
         {
             var net = new Net();
@@ -112,8 +112,8 @@ namespace ConvNetSharp.Tests
                 Assert.IsTrue(net.Layers[0] is InputLayer);
 
                 var deserializedConv = net.Layers[1] as ConvLayer;
-                Assert.NotNull(deserializedConv);
-                Assert.NotNull(deserializedConv.Filters);
+                Assert.IsNotNull(deserializedConv);
+                Assert.IsNotNull(deserializedConv.Filters);
                 Assert.AreEqual(16, deserializedConv.Filters.Count);
                 for (int i = 0; i < deserializedConv.Filters.Count; i++)
                 {
@@ -125,8 +125,8 @@ namespace ConvNetSharp.Tests
                 }
 
                 var deserializedFullyCon = net.Layers[2] as FullyConnLayer;
-                Assert.NotNull(deserializedFullyCon);
-                Assert.NotNull(deserializedFullyCon.Filters);
+                Assert.IsNotNull(deserializedFullyCon);
+                Assert.IsNotNull(deserializedFullyCon.Filters);
                 Assert.AreEqual(3, deserializedFullyCon.Filters.Count);
                 for (int i = 0; i < deserializedFullyCon.Filters.Count; i++)
                 {

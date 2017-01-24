@@ -1,11 +1,11 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ConvNetSharp.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class VolumeWrapperTests
     {
-        [Test]
+        [TestMethod]
         public void CloneTest()
         {
             var vol1 = new Volume(10, 10, 10);

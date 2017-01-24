@@ -1,15 +1,15 @@
 ﻿using ConvNetSharp.Layers;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ConvNetSharp.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class ConvLayerTests
     {
-        [Test]
+        [TestMethod]
         public void GradientWrtInputCheck()
         {
             const int inputWidth = 30;
@@ -26,7 +26,7 @@ namespace ConvNetSharp.Tests
             GradientCheckTools.GradientCheck(layer, inputWidth, inputHeight, inputDepth);
         }
 
-        [Test]
+        [TestMethod]
         public void GradientWrtParametersCheck()
         {
             const int inputWidth = 10;
@@ -43,7 +43,7 @@ namespace ConvNetSharp.Tests
             GradientCheckTools.GradienWrtParameterstCheck(inputWidth, inputHeight, inputDepth, layer);
         }
 
-        [Test]
+        [TestMethod]
         public void SerializationTest()
         {
             // Create a ConvLayer

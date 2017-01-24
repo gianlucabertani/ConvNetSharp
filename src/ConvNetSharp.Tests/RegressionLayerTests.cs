@@ -1,15 +1,15 @@
 ﻿using ConvNetSharp.Layers;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ConvNetSharp.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class RegressionLayerTests
     {
-        [Test]
+        [TestMethod]
         public void SerializationTest()
         {
             // Create a RegressionLayer
