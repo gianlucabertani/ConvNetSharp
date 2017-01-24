@@ -19,7 +19,7 @@ namespace ConvNetSharp.Layers
             var output = input.Clone();
 
 #if PARALLEL
-            Parallel.For(0, input.Length, i =>
+            ParallelUtilities.For(0, input.Length, i =>
 #else
             for (var i = 0; i < input.Length; i++)
 #endif
@@ -44,7 +44,7 @@ namespace ConvNetSharp.Layers
             volume.ZeroGradients(); // zero out gradient wrt data
 
 #if PARALLEL
-            Parallel.For(0, length, i =>
+            ParallelUtilities.For(0, length, i =>
 #else
             for (var i = 0; i < length; i++)
 #endif

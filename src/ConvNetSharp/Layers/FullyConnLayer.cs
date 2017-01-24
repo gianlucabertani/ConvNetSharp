@@ -44,7 +44,7 @@ namespace ConvNetSharp.Layers
             var outputActivation = new Volume(1, 1, this.OutputDepth, 0.0);
 
 #if PARALLEL
-            Parallel.For(0, this.OutputDepth, (int i) =>
+            ParallelUtilities.For(0, this.OutputDepth, (int i) =>
 #else
             for (var i = 0; i < this.OutputDepth; i++)
 #endif
@@ -74,7 +74,7 @@ namespace ConvNetSharp.Layers
             // compute gradient wrt weights and data
 #if PARALLEL
             var lockObject = new object();
-            Parallel.For(0, this.OutputDepth, () => new double[volume.Length], (int i, ParallelLoopState state, double[] temp) =>
+            ParallelUtilities.For(0, this.OutputDepth, () => new double[volume.Length], (int i, ParallelLoopState state, double[] temp) =>
 #else
             for (var i = 0; i < this.OutputDepth; i++)
 #endif

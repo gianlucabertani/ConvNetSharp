@@ -84,7 +84,7 @@ namespace ConvNetSharp.Layers
             var xyStride = this.Stride;
 
 #if PARALLEL
-            Parallel.For(0, this.OutputDepth, depth =>
+            ParallelUtilities.For(0, this.OutputDepth, depth =>
 #else
             for (var depth = 0; depth < this.OutputDepth; depth++)
 #endif
@@ -145,7 +145,7 @@ namespace ConvNetSharp.Layers
 
 #if PARALLEL
             var locker = new object();
-            Parallel.For(0, this.OutputDepth, () => new Volume(volumeWidth, volumeHeight, volumeDepth, 0), (depth, state, temp) =>
+            ParallelUtilities.For(0, this.OutputDepth, () => new Volume(volumeWidth, volumeHeight, volumeDepth, 0), (depth, state, temp) =>
 #else
             var temp = volume;
             for (var depth = 0; depth < this.OutputDepth; depth++)

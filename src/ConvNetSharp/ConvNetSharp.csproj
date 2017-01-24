@@ -53,6 +53,7 @@
     <Compile Include="Layers\LastLayerBase.cs" />
     <Compile Include="Layers\MergeLayer.cs" />
     <Compile Include="Layers\ParametersAndGradients.cs" />
+    <Compile Include="ParallelUtilities.cs" />
     <Compile Include="Serialization\SerializationExtensions.cs" />
     <Compile Include="Training\AdadeltaTrainer.cs" />
     <Compile Include="Training\AdagradTrainer.cs" />

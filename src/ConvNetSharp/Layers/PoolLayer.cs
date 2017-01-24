@@ -64,7 +64,7 @@ namespace ConvNetSharp.Layers
             var outputActivation = new Volume(this.OutputWidth, this.OutputHeight, this.OutputDepth, 0.0);
 
 #if PARALLEL
-            Parallel.For(0, this.OutputDepth, depth =>
+            ParallelUtilities.For(0, this.OutputDepth, depth =>
 #else
             for (var depth = 0; depth < this.OutputDepth; depth++)
 #endif
@@ -126,7 +126,7 @@ namespace ConvNetSharp.Layers
             volume.ZeroGradients(); // zero out gradient wrt data
 
 #if PARALLEL
-            Parallel.For(0, this.OutputDepth, depth =>
+            ParallelUtilities.For(0, this.OutputDepth, depth =>
 #else
             for (var depth = 0; depth < this.OutputDepth; depth++)
 #endif
