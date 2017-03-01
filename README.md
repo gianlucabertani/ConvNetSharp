@@ -7,7 +7,7 @@ Thank you very much to the original author (Andrej Karpathy) and to all the cont
 
 ## Example Code
 
-Here's a minimum example of defining a **2-layer neural network** and training
+Here's a minimum [example](https://github.com/cbovar/ConvNetSharp/tree/master/Examples/MinimalExample) of defining a **2-layer neural network** and training
 it on a single data point:
 ```c#
   // species a 2-layer neural network with one hidden layer of 20 neurons
@@ -36,13 +36,13 @@ it on a single data point:
   var prob = net.Forward(x);
 
   // prob is a Volume. Volumes have a property Weights that stores the raw data, and WeightGradients that stores gradients
-  Console.WriteLine("probability that x is class 0: " + prob.Weights[0]); // prints e.g. 0.50101
+  Console.WriteLine("probability that x is class 0: " + prob.Get(0)); // prints e.g. 0.50101
 
   var trainer = new SgdTrainer(net) {LearningRate = 0.01, L2Decay = 0.001};
   trainer.Train(x, 0); // train the network, specifying that x is class zero
 
   var prob2 = net.Forward(x);
-  Console.WriteLine("probability that x is class 0: " + prob2.Weights[0]);
+  Console.WriteLine("probability that x is class 0: " + prob2.Get(0));
   // now prints 0.50374, slightly higher than previous 0.50101: the networks
   // weights have been adjusted by the Trainer to give a higher probability to
   // the class we trained the network with (zero)
