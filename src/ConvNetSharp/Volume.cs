@@ -55,9 +55,10 @@ namespace ConvNetSharp
             // of incoming connections have outputs of larger variance
             var scale = Math.Sqrt(2.0 / (width * height * depth));
 
+            RandomUtilities random = new RandomUtilities();
             for (var i = 0; i < n; i++)
             {
-                this.Weights[i] = RandomUtilities.Randn(0.0, scale);
+                this.Weights[i] = random.Randn(0.0, scale);
             }
         }
 

@@ -4,8 +4,6 @@ namespace ConvNetSharp
 {
     public static class VolumeUtilities
     {
-        private static readonly Random Random = new Random(RandomUtilities.Seed);
-
         public enum FlipMode
         {
             LeftRight,
@@ -64,14 +62,18 @@ namespace ConvNetSharp
         /// <returns></returns>
         public static IVolume Augment(this Volume volume, int crop, int dx = -1, int dy = -1, bool flipLeftRight = false)
         {
-            if (dx == -1)
-            {
-                dx = Random.Next(volume.Width - crop);
-            }
+            if ((dx == -1) || (dy == -1)) {
+                Random rand = new Random(RandomUtilities.Seed);
 
-            if (dy == -1)
-            {
-                dy = Random.Next(volume.Height - crop);
+                if (dx == -1)
+                {
+                    dx = rand.Next(volume.Width - crop);
+                }
+
+                if (dy == -1)
+                {
+                    dy = rand.Next(volume.Height - crop);
+                }
             }
 
             // randomly sample a crop in the input volume

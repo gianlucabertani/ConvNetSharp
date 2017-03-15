@@ -7,8 +7,6 @@ namespace ConvNetSharp.Layers
     [Serializable]
     public class DropOutLayer : LayerBase
     {
-        private static readonly Random Random = new Random(RandomUtilities.Seed);
-
         [DataMember]
         private bool[] dropped;
 
@@ -28,10 +26,12 @@ namespace ConvNetSharp.Layers
 
             if (isTraining)
             {
+                Random rand = new Random(RandomUtilities.Seed);
+
                 // do dropout
                 for (var i = 0; i < length; i++)
                 {
-                    if (Random.NextDouble() < this.DropProb)
+                    if (rand.NextDouble() < this.DropProb)
                     {
                         output.Set(i, 0);
                         this.dropped[i] = true;
